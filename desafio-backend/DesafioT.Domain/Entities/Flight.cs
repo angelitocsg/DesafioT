@@ -34,8 +34,8 @@ namespace DesafioT.Domain.Entities
             if (!valid) { ValidateMessage = "Incorrect fill"; return valid; }
 
             // Valida tamanha do campo
-            if (valid) valid = Id.Length == 3;
-            if (!valid) { ValidateMessage = "Id length must be equal to 3"; return valid; }
+            if (valid) valid = AirportFrom.Length == 3 && AirportTo.Length == 3;
+            if (!valid) { ValidateMessage = "AirportFrom and AirportTo length must be equal to 3"; return valid; }
 
             // Valida preco > 0
             if (valid) valid = Price > 0;

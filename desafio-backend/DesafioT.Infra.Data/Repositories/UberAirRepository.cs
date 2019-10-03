@@ -3,6 +3,7 @@ using DesafioT.Domain.Interfaces.Repositories;
 using DesafioT.Infra.Data.Enums;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 
 namespace DesafioT.Infra.Data.Repositories
@@ -42,7 +43,7 @@ namespace DesafioT.Infra.Data.Repositories
                     Date = Convert.ToDateTime(columns[(int)COLUMNS.Data]),
                     DepartureTime = columns[(int)COLUMNS.HorarioSaida],
                     ArrivalTime = columns[(int)COLUMNS.HorarioChegada],
-                    Price = Convert.ToDecimal(columns[(int)COLUMNS.Preco])
+                    Price = Convert.ToDecimal(columns[(int)COLUMNS.Preco].Replace(".",",", false, CultureInfo.GetCultureInfo("en-US")))
                 };
 
                 ParsedData.Add(flight);
