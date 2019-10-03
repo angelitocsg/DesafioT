@@ -21,12 +21,29 @@ namespace DesafioT.Domain.Services
 
         public IEnumerable<Flight> AvailableFlights(string airportFrom, string airportTo, DateTime requiredDate)
         {
-            var directFlights = _flightsRepository
-                .GetFlights()
-                // Voos diretos e no mesmo dia
-                .Where(f => f.AirportFrom.Equals(airportFrom) && f.AirportTo.Equals(airportTo) && f.Date.Equals(requiredDate));
+            var directFlights = GetDirectFligthsSameDay(airportFrom, airportTo, requiredDate);
 
-            var stopFlights = _flightsRepository
+            var stopFlights = GetStopFlights(airportFrom, airportTo, requiredDate);
+
+            if (StopFlightsIsValid(stopFlights, airportFrom, airportTo))
+            {
+                var stopFlightsPossible = GetPossibleStopFlights(stopFlights, airportFrom, airportTo);
+                return directFlights.Concat(stopFlightsPossible);
+            }
+
+            return directFlights;
+        }
+
+        private IEnumerable<Flight> GetDirectFligthsSameDay(string airportFrom, string airportTo, DateTime requiredDate)
+        {
+            return _flightsRepository
+                 .GetFlights()
+                 .Where(f => f.AirportFrom.Equals(airportFrom) && f.AirportTo.Equals(airportTo) && f.Date.Equals(requiredDate));
+        }
+
+        private IEnumerable<Flight> GetStopFlights(string airportFrom, string airportTo, DateTime requiredDate)
+        {
+            return _flightsRepository
                 .GetFlights()
                 // Não são diretos no mesmo dia
                 .Where(f => !(f.AirportFrom.Equals(airportFrom) && f.AirportTo.Equals(airportTo) && f.Date.Equals(requiredDate)))
@@ -34,27 +51,19 @@ namespace DesafioT.Domain.Services
                 .Where(f => (f.AirportFrom.Equals(airportFrom) && f.Date.Equals(requiredDate))
                 // Destino requerido, origem independente e data maior igual a data requerida
                     || (f.AirportTo.Equals(airportTo) && f.Date >= requiredDate && f.Date <= requiredDate.AddDays(2)));
+        }
 
+        private bool StopFlightsIsValid(IEnumerable<Flight> stopFlights, string airportFrom, string airportTo)
+        {
             // Deve possuir pelo pelo menos um voo de origem requerida
-            stopFlights = stopFlights.Where(f => f.AirportFrom.Equals(airportFrom)).Count() > 0
+            return stopFlights.Where(f => f.AirportFrom.Equals(airportFrom)).Count() > 0
                 // Deve possuir pelo pelo menos um voo de destino requerido
-                && stopFlights.Where(f => f.AirportTo.Equals(airportTo)).Count() > 0 ? stopFlights : null;
+                && stopFlights.Where(f => f.AirportTo.Equals(airportTo)).Count() > 0 ? true : false;
+        }
 
-            var stopFlightsValid = stopFlights;
-
-            if (stopFlights != null)
-            {
-                var allFlights = stopFlights
-                    .Select(f => $"{f.AirportFrom};{f.AirportTo};{f.Company};{f.DepartureTime};{f.ArrivalTime}");
-
-                var csv = string.Join("\r\n", allFlights);
-
-                stopFlightsValid = FindFlights(stopFlights, airportFrom, airportTo).Where(f => f.Stops.Count() > 0);
-            }
-
-            var flights = stopFlightsValid != null ? directFlights.Concat(stopFlightsValid) : directFlights;
-
-            return flights;
+        private IEnumerable<Flight> GetPossibleStopFlights(IEnumerable<Flight> stopFlights, string airportFrom, string airportTo)
+        {
+            return FindFlights(stopFlights, airportFrom, airportTo).Where(f => f.Stops.Count() > 0);
         }
 
         private IEnumerable<Flight> FindFlights(IEnumerable<Flight> flights, string airportFrom, string airportTo)
