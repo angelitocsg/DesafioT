@@ -1,8 +1,11 @@
 ﻿using DesafioT.Domain.Entities;
 using DesafioT.Domain.Interfaces.Repositories;
+using DesafioT.Infra.Data.Data;
 using DesafioT.Infra.Data.Models;
 using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
+using System.Resources;
 
 namespace DesafioT.Infra.Data.Repositories
 {
@@ -22,7 +25,7 @@ namespace DesafioT.Infra.Data.Repositories
 
         private void ParseAndLoad()
         {
-            var DataSource = Properties.Resources.airports;
+            var DataSource = Utils.ReadFile("data/airports.json");
             var DataJson = JArray.Parse(DataSource);
             var ParsedData = new List<Airport>();
 

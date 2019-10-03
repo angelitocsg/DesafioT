@@ -54,7 +54,7 @@ namespace DesafioT.API
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Desafio T - Flight API");
             });
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseMvc();
         }
     }

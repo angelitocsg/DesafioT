@@ -1,5 +1,6 @@
 ﻿using DesafioT.Domain.Entities;
 using DesafioT.Domain.Interfaces.Repositories;
+using DesafioT.Infra.Data.Data;
 using DesafioT.Infra.Data.Models;
 using Newtonsoft.Json.Linq;
 using System;
@@ -23,7 +24,7 @@ namespace DesafioT.Infra.Data.Repositories
 
         private void ParseAndLoad()
         {
-            var DataSource = Properties.Resources._99planes;
+            var DataSource = Utils.ReadFile("data/99planes.json");
             var DataJson = JArray.Parse(DataSource);
             var ParsedData = new List<Flight>();
 

@@ -1,5 +1,6 @@
 ﻿using DesafioT.Domain.Entities;
 using DesafioT.Domain.Interfaces.Repositories;
+using DesafioT.Infra.Data.Data;
 using DesafioT.Infra.Data.Enums;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,7 @@ namespace DesafioT.Infra.Data.Repositories
 
         private void ParseAndLoad()
         {
-            var DataSource = Properties.Resources.uberair;
+            var DataSource = Utils.ReadFile("data/uberair.csv");
             var Lines = DataSource.Split("\r\n");
             var ParsedData = new List<Flight>();
 

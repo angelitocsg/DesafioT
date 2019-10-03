@@ -1,4 +1,4 @@
-﻿numero_voo,aeroporto_origem,aeroporto_destino,data,horario_saida,horario_chegada,preco
+numero_voo,aeroporto_origem,aeroporto_destino,data,horario_saida,horario_chegada,preco
 B13F30,BSB,FLN,2019-02-10,19:00,23:30,369.19
 B77M69,BSB,MCZ,2019-02-10,20:00,23:00,413.13
 B16V27,BSB,VCP,2019-02-10,07:00,17:00,1317.50
