@@ -1,5 +1,6 @@
 ﻿using DesafioT.Domain.Entities;
 using DesafioT.Domain.Interfaces.Repositories;
+using DesafioT.Infra.Data.Models;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 
@@ -8,13 +9,6 @@ namespace DesafioT.Infra.Data.Repositories
     public class AirportsRepository : IAirportsRepository
     {
         private IEnumerable<Airport> Airports;
-
-        private struct Aeroporto
-        {
-            public string nome { get; set; }
-            public string aeroporto { get; set; }
-            public string cidade { get; set; }
-        }
 
         public AirportsRepository()
         {

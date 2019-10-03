@@ -1,5 +1,6 @@
 ﻿using DesafioT.Domain.Entities;
 using DesafioT.Domain.Interfaces.Repositories;
+using DesafioT.Infra.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,17 +19,6 @@ namespace DesafioT.Infra.Data.Repositories
         public IEnumerable<Flight> GetFlights()
         {
             return Flights;
-        }
-
-        private enum COLUMNS
-        {
-            NumeroVoo = 0,
-            AeroportoOrigem = 1,
-            AeroportoDestino = 2,
-            Data = 3,
-            HorarioSaida = 4,
-            HorarioChegada = 5,
-            Preco = 6
         }
 
         private void ParseAndLoad()
