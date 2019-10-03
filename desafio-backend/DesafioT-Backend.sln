@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioT.Infra.Data", "Desa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DesafioT.API", "DesafioT.API\DesafioT.API.csproj", "{3354EEF3-A8FA-4D66-A288-F94C681EC54D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesafioT.Tests", "DesafioT.Tests\DesafioT.Tests.csproj", "{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +57,18 @@ Global
 		{3354EEF3-A8FA-4D66-A288-F94C681EC54D}.Release|x64.Build.0 = Release|Any CPU
 		{3354EEF3-A8FA-4D66-A288-F94C681EC54D}.Release|x86.ActiveCfg = Release|Any CPU
 		{3354EEF3-A8FA-4D66-A288-F94C681EC54D}.Release|x86.Build.0 = Release|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Debug|x64.Build.0 = Debug|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Debug|x86.Build.0 = Debug|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Release|x64.ActiveCfg = Release|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Release|x64.Build.0 = Release|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Release|x86.ActiveCfg = Release|Any CPU
+		{CBB0BEB4-9A8C-442F-AE35-3BB11B1C9886}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
